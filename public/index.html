@@ -65,7 +65,7 @@
               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="priceColumn">
                 Price Column name/label in the CSV File
               </label>
-              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="price-column-input" name="priceColumn" type="number" min="0" step="0.01" placeholder="Enter Price e.g. '99.00'">
+              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="price-column-input" name="priceColumn" type="text" min="0" step="0.01" placeholder="Enter Price e.g. '99.00'">
             </div>
           </div>
           <div class="flex flex-wrap -mx-3 mb-6">
@@ -73,7 +73,7 @@
               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="inventoryColumn">
                 Inventory Column name/label in the CSV File
               </label>
-              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="inventory-column-input" name="inventoryColumn" type="number" min="0" step="0.01" placeholder="Enter Price e.g. '99.00'">
+              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="inventory-column-input" name="inventoryColumn" type="text" min="0" step="0.01" placeholder="Enter Price e.g. '99.00'">
             </div>
           </div>
           <div class="flex flex-wrap -mx-3 mb-6">
@@ -108,12 +108,12 @@
         </div>
     </div>
     <script type="module">
-        import { getAllProducts } from '../functions/getAllProducts.js';
+        import { getAllProducts } from "../functions/getAllProducts.js";
   
         window.addEventListener('load', () => {
           getAllProducts();
         });
-      </script>
+    </script>
     <script>
         const updateProduct = async (productId, price, inventory) => {
         const response = await fetch("/.netlify/functions/updateProduct", {
