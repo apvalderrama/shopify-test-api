@@ -126,24 +126,29 @@ const updateProductGQL = async (productId, variantId, price, inventory, inventor
     }
   `;
 
+    const variables = {
+        variantInput: {
+        id: `gid://shopify/ProductVariant/${variantId}`,
+        price: price,
+        },
+    };
+
+    if (inventory !== null) {
+        variables.inventoryAdjustInput = {
+        inventoryLevelId: inventoryLevelId,
+        availableDelta: parseInt(inventory, 10),
+        };
+    }
+
     const response = await fetch(url, {
         method: 'POST',
         headers: { "Content-Type": "application/json", "Authorization": `Basic ${authToken}` },
         body: JSON.stringify({
         query,
-        variables: {
-            variantInput: {
-            id: `gid://shopify/ProductVariant/${variantId}`,
-            price: price,
-            },
-            inventoryAdjustInput: {
-            inventoryLevelId: inventoryLevelId,
-            availableDelta: parseInt(inventory, 10),
-            },
-        },
+        variables: variables,
         }),
     });
-  
+    
     const data = await response.json();
 
     if (response.ok) {
